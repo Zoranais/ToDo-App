@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using MAUI_Tests.Model;
 using MAUI_Tests.Services;
+using MAUI_Tests.Themes;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
@@ -9,6 +10,7 @@ namespace MAUI_Tests.ViewModel
 {
     public partial class MainViewModel : ObservableObject 
     {
+        bool isDarkTheme = false;
         TaskService taskService;
         public MainViewModel(TaskService taskService)
         {
@@ -52,6 +54,24 @@ namespace MAUI_Tests.ViewModel
         {
             s.IsCompleted = !s.IsCompleted;
             taskService.Save();
+        }
+        [RelayCommand]
+        void Theme()
+        {
+            var mergedDictionaries = Application.Current.Resources.MergedDictionaries;
+            if (mergedDictionaries != null)
+            {
+                mergedDictionaries.Clear();
+                if (isDarkTheme)
+                {
+                    mergedDictionaries.Add(new LightTheme());
+                }
+                else
+                {
+                    mergedDictionaries.Add(new DarkTheme());
+                }
+                isDarkTheme = !isDarkTheme;
+            }
         }
     }
 }

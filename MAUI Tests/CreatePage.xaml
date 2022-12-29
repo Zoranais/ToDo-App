@@ -4,7 +4,8 @@
              x:Class="MAUI_Tests.CreatePage"
              xmlns:viewmodel="clr-namespace:MAUI_Tests.ViewModel"
              x:DataType="viewmodel:CreateViewModel"
-             Title="Create">
+             Title="Create"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
     <VerticalStackLayout Spacing="15" Padding="10,10,10,0">
         <Label Text="{Binding ErrorText}"
                VerticalOptions="Center" 
@@ -16,25 +17,30 @@
                        Text="Name:"
                        VerticalOptions="Center" 
                        HorizontalOptions="Start" 
-                       FontSize="20"/>
+                       FontSize="20"
+                TextColor="{DynamicResource PrimaryTextColor}"/>
             <Entry 
                        Placeholder="Enter the name of the task"
-                       Text="{Binding TaskModel.Header,Mode=TwoWay}"/>
+                       Text="{Binding TaskModel.Header,Mode=TwoWay}"
+                       TextColor="{DynamicResource PrimaryTextColor}"/>
         </VerticalStackLayout>
         <VerticalStackLayout>
             <Label Text="Content:"
                         VerticalOptions="Center" 
                         HorizontalOptions="Start" 
-                        FontSize="20"/>
+                        FontSize="20"
+                        TextColor="{DynamicResource PrimaryTextColor}"/>
             <Entry
                         Placeholder="Enter task description"
-                        Text="{Binding TaskModel.Body,Mode=TwoWay}"/>
+                        Text="{Binding TaskModel.Body,Mode=TwoWay}"
+                        TextColor="{DynamicResource PrimaryTextColor}"/>
         </VerticalStackLayout>
         <HorizontalStackLayout>
             <Label Text="Time limited:"
                         VerticalOptions="Center" 
                         HorizontalOptions="Start" 
-                        FontSize="20"/>
+                        FontSize="20"
+                        TextColor="{DynamicResource PrimaryTextColor}"/>
             <CheckBox IsChecked="{Binding TaskModel.IsTimeLimited, Mode=TwoWay}" VerticalOptions="Center" 
                       HorizontalOptions="End"
                       x:Name="checkbox"/>
@@ -43,11 +49,14 @@
             <Label Text="End time:"
                         VerticalOptions="Center" 
                         HorizontalOptions="Start" 
-                        FontSize="20"/>
+                        FontSize="20"
+                        TextColor="{DynamicResource PrimaryTextColor}"/>
             <DatePicker Date ="{Binding TaskModel.EndTime, Mode=TwoWay}"/>
         </VerticalStackLayout>
 
         <Button Text="Add!"
-                    Command="{Binding AddCommand}"/>
+                    Command="{Binding AddCommand}"
+                BackgroundColor="{DynamicResource SecondaryColor}"
+                TextColor="{DynamicResource SecondaryTextColor}"/>
     </VerticalStackLayout>
 </ContentPage>

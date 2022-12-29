@@ -4,8 +4,11 @@
              x:Class="MAUI_Tests.MainPage"
              xmlns:viewmodel="clr-namespace:MAUI_Tests.ViewModel"
              x:DataType="viewmodel:MainViewModel"
-             xmlns:local ="clr-namespace:MAUI_Tests.Model">
-
+             xmlns:local ="clr-namespace:MAUI_Tests.Model"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Theme" Command="{Binding ThemeCommand}"/>
+    </ContentPage.ToolbarItems>
     <ScrollView>
         <Grid RowDefinitions="100, Auto, *"
               ColumnDefinitions="1*"
@@ -13,14 +16,23 @@
               RowSpacing="10"
               ColumnSpacing="10">
             <Image Grid.ColumnSpan="2"
-                   Source="dotnet_bot.png"/>
+                   Source="icon.png"
+                    />
             <Button Grid.ColumnSpan="1"
                     Grid.Row="1"
                     Text="Add"
-                    Command="{Binding AddCommand}"/>
+                    Command="{Binding AddCommand}"
+                    BackgroundColor="{DynamicResource SecondaryColor}"
+                    TextColor="{DynamicResource SecondaryTextColor}"/>
             <CollectionView Grid.ColumnSpan="1" Grid.Row="2"
                             ItemsSource="{Binding Items}"
-                            SelectionMode="None">
+                            SelectionMode="None"
+                            
+                            >
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="5"
+                                       Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="{x:Type local:TaskModel}">
                         <SwipeView>
@@ -39,17 +51,24 @@
                                 </SwipeItems>
                             </SwipeView.LeftItems>
                             <Grid Padding="0.5">
-                                <Frame>
+                                <Frame BackgroundColor="{DynamicResource PrimaryColor}"
+                                       BorderColor="Transparent">
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=CheckCommand}"
                                                               CommandParameter="{Binding .}"/>
                                     </Frame.GestureRecognizers>
                                     <StackLayout Orientation="Horizontal">
                                         <Label Text="{Binding Header}"
-                                         FontSize="24"/>
-                                        <CheckBox IsEnabled="False"
+                                         FontSize="16" TextColor="{DynamicResource PrimaryTextColor}"
+                                               VerticalTextAlignment="Center"/>
+                                        <CheckBox
+                                              IsEnabled="False"
                                               IsChecked="{Binding IsCompleted}"
                                               HorizontalOptions="EndAndExpand"
+                                              VerticalOptions="CenterAndExpand"
+                                              Color="#4630D9"
+                                              BackgroundColor="Transparent"
+                                              
                                               />
                                     </StackLayout>
                                 </Frame>
