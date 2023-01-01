@@ -14,7 +14,7 @@
                        HorizontalOptions="Start" 
                        FontSize="20"/>   
                 <Entry
-                       Text="{Binding TaskModel.Header,Mode=TwoWay}"/>
+                       Text="{Binding EditTask.Header,Mode=TwoWay}"/>
             </VerticalStackLayout>
             <VerticalStackLayout>
                 <Label Text="Content:"
@@ -22,14 +22,14 @@
                         HorizontalOptions="Start" 
                         FontSize="20"/>
                 <Entry
-                        Text="{Binding TaskModel.Body,Mode=TwoWay}"/>
+                        Text="{Binding EditTask.Body,Mode=TwoWay}"/>
             </VerticalStackLayout>
             <HorizontalStackLayout>
                 <Label Text="Is timelimited:"
                         VerticalOptions="Center" 
                         HorizontalOptions="Start" 
                         FontSize="20"/>
-                <CheckBox IsChecked="{Binding TaskModel.IsTimeLimited, Mode=TwoWay}" VerticalOptions="Center" 
+                <CheckBox IsChecked="{Binding EditTask.IsTimeLimited, Mode=TwoWay}" VerticalOptions="Center" 
                         HorizontalOptions="End" />
             </HorizontalStackLayout>
             <VerticalStackLayout>
@@ -37,7 +37,7 @@
                         VerticalOptions="Center" 
                         HorizontalOptions="Start" 
                         FontSize="20"/>
-                <DatePicker Date ="{Binding TaskModel.EndTime, Mode=TwoWay}"/>
+                <DatePicker Date ="{Binding EditTask.EndTime, Mode=TwoWay}"/>
             </VerticalStackLayout>
             
             <Button Text="Save!"

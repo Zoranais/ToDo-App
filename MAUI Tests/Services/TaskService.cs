@@ -17,14 +17,22 @@ namespace MAUI_Tests.Services
         public TaskService(SaveService saveService)
         {
             this.saveService = saveService;
-            tasks = this.saveService.GetSavedTasks() ?? new ObservableCollection<TaskModel>();
+            tasks = saveService.GetSavedTasks();
         }
         public void Add(TaskModel task)
         {
             if (task != null)
             {
                 tasks.Add(task);
-                saveService.Save(tasks);
+                Save();
+            }
+        }
+        public void Remove(TaskModel task)
+        {
+            if (tasks.Contains(task))
+            {
+                tasks.Remove(task);
+                Save();
             }
         }
         public void Save() => saveService.Save(tasks);

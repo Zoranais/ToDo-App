@@ -12,10 +12,15 @@ namespace MAUI_Tests.ViewModel
     {
         bool isDarkTheme = false;
         TaskService taskService;
-        public MainViewModel(TaskService taskService)
+        public MainViewModel(TaskService taskService, 
+            SaveService sv)
         {
             this.taskService = taskService;
             Items = taskService.Tasks;
+            //foreach (var item in sv.GetSavedTasks())
+            //{
+            //    Items.Add(item);
+            //}
         }
         [ObservableProperty]
         ObservableCollection<TaskModel> items;
@@ -27,18 +32,11 @@ namespace MAUI_Tests.ViewModel
         async void Add()
         {
             await Shell.Current.GoToAsync($"{nameof(CreatePage)}");
-            //if (string.IsNullOrEmpty(Name))
-            //    return;
-            //Items.Add(new TaskModel());
-            //Name = string.Empty;
         }
         [RelayCommand]
         void Delete(TaskModel s)
         {
-            if (Items.Contains(s))
-            {
-                Items.Remove(s);
-            }
+            taskService.Remove(s);
         }
         [RelayCommand]
         async Task Edit(TaskModel s)

@@ -37,15 +37,19 @@
                     <DataTemplate x:DataType="{x:Type local:TaskModel}">
                         <SwipeView>
                             <SwipeView.RightItems>
-                                <SwipeItems>
+                                <SwipeItems Mode="Execute">
                                     <SwipeItem Text="Delete"
+                                               BackgroundColor="{DynamicResource PageBackgroundColor}"
                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=DeleteCommand}"
                                                CommandParameter="{Binding .}"/>
                                 </SwipeItems>
                             </SwipeView.RightItems>
                             <SwipeView.LeftItems>
-                                <SwipeItems>
-                                    <SwipeItem Text="Edit"
+                                <SwipeItems Mode="Execute">
+                                    <SwipeItem 
+                                               
+                                               Text="Edit"
+                                               BackgroundColor="{DynamicResource PageBackgroundColor}"
                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=EditCommand}"
                                                CommandParameter="{Binding .}"/>
                                 </SwipeItems>

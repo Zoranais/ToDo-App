@@ -22,9 +22,9 @@ namespace MAUI_Tests.Services
             var path = Path.Combine(FileSystem.Current.AppDataDirectory, "savedtasks.json");
             if (File.Exists(path))
             {
-                return JsonSerializer.Deserialize<ObservableCollection<TaskModel>>(File.ReadAllText(path));
+                result = JsonSerializer.Deserialize<ObservableCollection<TaskModel>>(File.ReadAllText(path));
             }
-            return new ObservableCollection<TaskModel>();
+            return result;
         }
     }
 }
